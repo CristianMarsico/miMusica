@@ -1,0 +1,13 @@
+<hr>
+<h1>Lista de cds</h1>
+<hr>
+<div class="card-columns">
+    <div class="card animated fadeIn fast" *ngFor="let lista of general ; let indice= index"
+        [ngClass]="{'estreno': lista.anio ==anio}">
+        <img [src]="lista.image" class="card-img-top tamano img-thumbnail" [alt]="lista.titulo">
+        <div class="card-body">
+            <h5 class="card-title"> {{ lista.genero }}</h5>
+            <p class="card-text">Año {{ lista.anio }}</p>
+        </div>
+    </div>
+</div>
