@@ -25,7 +25,7 @@ export class ListaCdsComponent implements OnInit {
       gusta: 0.9,
       dia: 12,
       valor: 200,
-      stock: 6,
+      stock: 0,
       cantidad: 0
     },
 
@@ -85,5 +85,10 @@ export class ListaCdsComponent implements OnInit {
       cantidad: 0
     }
   ];
+  maximoAlcanzado(c: number){
+    alert(c);
+  }
+
+  
 
 }

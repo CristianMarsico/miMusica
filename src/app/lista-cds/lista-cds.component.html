@@ -8,6 +8,9 @@
         <div class="card-body">
             <h5 class="card-title"> {{ lista.genero }}</h5>
             <p class="card-text">Año {{ lista.anio }}</p>
+            <app-input-mas-menos [(c)]="lista.cantidad" [max]="lista.stock" (limite)="l($event)" *ngIf="lista.stock">
+            </app-input-mas-menos>
         </div>
+        <p>{{lista.cantidad}}</p>
     </div>
 </div>
