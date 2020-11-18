@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Cds } from '../lista-cds/Variables';
 
 
 @Component({
