@@ -7,7 +7,7 @@
         <img [src]="lista.image" class="card-img-top tamano img-thumbnail" [alt]="lista.titulo">
         <div class="card-body" class="centrado">
             <h5 class="card-title"> {{ lista.genero }}</h5>
-            <p class="card-text">Año {{ lista.anio }}</p>
+            <p class="card-text">{{ lista.titulo }}</p>
             <div >
                 <span class="badge badge-dark" *ngIf="lista.anio > anio">PROXIMAMENTE</span>
                 <span class="badge badge-dark" *ngIf="lista.stock == 0">AGOTADO</span>

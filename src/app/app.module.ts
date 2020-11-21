@@ -9,6 +9,7 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { FormsModule } from '@angular/forms';
 import { InputMasMenosComponent } from './input-mas-menos/input-mas-menos.component';
 import { DetallesComponent } from './detalles/detalles.component';
+import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 
 @NgModule({
  
@@ -18,7 +19,8 @@ import { DetallesComponent } from './detalles/detalles.component';
     PrincipalComponent,
     CarritoComponent,
     InputMasMenosComponent,
-    DetallesComponent
+    DetallesComponent,
+    SobreNosotrosComponent
   ],
 
   imports: [

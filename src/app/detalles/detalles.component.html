@@ -1,13 +1,13 @@
-<h1 class="animated fadeIn fast">{{ lista.titulo}} <small></small></h1>
+<h1 class="animated fadeIn fast">{{ lista.titulo}} ({{lista.anio}}) <small></small></h1>
 <hr>
 <div class="row">
     <div class="col-3">
         <img [src]="lista.image" class="img-fluid" [alt]="lista.titulo">
     </div>
     <div class="col-5">
-        <h3>{{lista.genero}}</h3>
+        <h4>{{lista.genero}}</h4>
         <hr>
-        <h3>{{lista.descripcion}}</h3>
+        <h5>{{lista.descripcion}}</h5>
         <hr>
         <p>al {{lista.gusta| percent}} le gusta esto.</p>
         <hr>
