@@ -8,20 +8,25 @@ import { PrincipalComponent } from './principal/principal.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { FormsModule } from '@angular/forms';
 import { InputMasMenosComponent } from './input-mas-menos/input-mas-menos.component';
+import { DetallesComponent } from './detalles/detalles.component';
 
 @NgModule({
+ 
   declarations: [
     AppComponent,
     ListaCdsComponent,
     PrincipalComponent,
     CarritoComponent,
-    InputMasMenosComponent
+    InputMasMenosComponent,
+    DetallesComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })

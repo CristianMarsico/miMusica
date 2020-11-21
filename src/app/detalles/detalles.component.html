@@ -1,0 +1,16 @@
+<h1 class="animated fadeIn fast">{{ lista.titulo}} <small></small></h1>
+<hr>
+<div class="row">
+    <div class="col-3">
+        <img [src]="lista.image" class="img-fluid" [alt]="lista.titulo">
+    </div>
+    <div class="col-5">
+        <h3>{{lista.genero}}</h3>
+        <hr>
+        <h3>{{lista.descripcion}}</h3>
+        <hr>
+        <p>al {{lista.gusta| percent}} le gusta esto.</p>
+        <hr>
+        <a [routerLink]="['/home']" class="btn btn-outline-danger btn-block">Regresar</a>
+    </div>
+</div>

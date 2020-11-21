@@ -1,16 +1,23 @@
 <hr>
 <h1>Lista de cds</h1>
 <hr>
-<div class="card-columns">
+<div class="card-columns" >
     <div class="card animated fadeIn fast" *ngFor="let lista of general ; let indice= index"
         [ngClass]="{'estreno': lista.anio ==anio}">
         <img [src]="lista.image" class="card-img-top tamano img-thumbnail" [alt]="lista.titulo">
-        <div class="card-body">
+        <div class="card-body" class="centrado">
             <h5 class="card-title"> {{ lista.genero }}</h5>
             <p class="card-text">Año {{ lista.anio }}</p>
-            <app-input-mas-menos [(c)]="lista.cantidad" [max]="lista.stock" (limite)="l($event)" *ngIf="lista.stock">
-            </app-input-mas-menos>
-        </div>
-        <p>{{lista.cantidad}}</p>
+            <div >
+                <span class="badge badge-dark" *ngIf="lista.anio > anio">PROXIMAMENTE</span>
+                <span class="badge badge-dark" *ngIf="lista.stock == 0">AGOTADO</span>
+                <span class="badge badge-warning" *ngIf="lista.anio == anio">ESTRENO</span>
+            </div>
+            <app-input-mas-menos 
+                [(c)]="lista.cantidad" [max]="lista.stock" (limite)="limite($event)" *ngIf="lista.stock">
+            </app-input-mas-menos>     
+            <button class="btn btn-outline-primary btn-block" (click)="agregar(lista)">Comprar</button>
+            <button (click)="verCd(indice)" type="button" class="btn btn-outline-primary btn-block">Detalles</button>
+        </div>    
     </div>
 </div>

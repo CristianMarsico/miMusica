@@ -1,23 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Cds } from './Variables';
-import { Router } from '@angular/router';
-import { ServicioCarritoService } from '../servicio-carrito.service';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Cds } from './lista-cds/Variables';
 
-@Component({
-  selector: 'app-lista-cds',
-  templateUrl: './lista-cds.component.html',
-  styleUrls: ['./lista-cds.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class ListaCdsComponent implements OnInit {
+export class ServicioCarritoService {
 
-  anio: number;
-  
-  
-  constructor(private cart: ServicioCarritoService,private router: Router) {
-    
-    this.anio = new Date().getFullYear();
-  
-  }
+  @Injectable({
+    providedIn: 'root'
+  })
 
   general: Cds[] = [
 
@@ -96,28 +88,38 @@ export class ListaCdsComponent implements OnInit {
       cantidad: 0
     }
   ];
-  
-  limite(c: number) {
-    alert("no puede superar mas de "+c+" unidades");
-  }
-  
-  agregar (general): void {
-    console.log(general);
-    if (general.cantidad != 0) {
-      this.cart.agregar(general);
-      general.stock -= general.cantidad;
-      console.log(general.stock);
-      general.cantidad = 0;
+
+  private _changuito: Cds[] = [];
+
+  _total = 0;
+  _contProductos = 0;
+
+  arregloCds: BehaviorSubject<Cds[]> = new BehaviorSubject([]);
+  total: BehaviorSubject<number> = new BehaviorSubject(this._total);
+  cartQuantity: BehaviorSubject<number> = new BehaviorSubject(this._contProductos);
+  constructor() { }
+
+  agregar(cds: Cds) {
+    const item: Cds = this._changuito.find((v1) => v1.genero == cds.genero);
+
+    if (!item) {
+      this._changuito.push({ ...cds });
+      this._contProductos++;
     } else {
-      alert("ingrese una cantidad valida");
+      item.cantidad += cds.cantidad;
     }
+    this._total = this._changuito.reduce((a, c) => c.valor * c.cantidad + a, 0);
+
+    this.arregloCds.next(this._changuito); //similar al emmit del evento
+    this.cartQuantity.next(this._contProductos);
+    this.total.next(this._total);
+  }
+  obtenerID(id: string) {
+    console.log(this.general);
+    return this.general[id];
   }
 
-  verCd(id: number) {
-    this.router.navigate(['/general', id]);
-  }
 
-  ngOnInit(): void {
-  }
+
 
 }

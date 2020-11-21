@@ -1,4 +1,4 @@
-export interface Cds{
+export interface Cds {
 
     titulo: String;
     genero: String;
@@ -11,5 +11,6 @@ export interface Cds{
     valor: number;
     stock: number;
     cantidad: number;
-    
+    autor: String;
+
 } 

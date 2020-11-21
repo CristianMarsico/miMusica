@@ -1,5 +1,4 @@
-import { Component, OnInit} from '@angular/core';
-import { Cds } from '../lista-cds/Variables';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -10,22 +9,37 @@ import { Cds } from '../lista-cds/Variables';
 export class InputMasMenosComponent implements OnInit {
 
   constructor() { }
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
+
+  @Input()
+  c: number;
+
+  @Input()
+  max: number;
+
+  @Output()
+  cChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  limite: EventEmitter<number> = new EventEmitter<number>();
+
+  restar(): void {
+    if (this.c > 0) {
+      this.c--;
+      this.cChange.emit(this.c);
+    }
+  }
+  sumar(): void {
+    if (this.c < this.max) {
+      this.c++;
+      this.cChange.emit(this.c);
+    }
+    else {
+      this.limite.emit(this.max);
+    }
   }
 
- 
-  restar(general: Cds): void{
-    if(general.cantidad > 0)
-      general.cantidad--;
-      
-    
+  ngOnInit(): void {
   }
-  sumar(general: Cds): void{
-    if(general.cantidad < general.stock)
-      general.cantidad++;
-  }
-    
 
 }
 
